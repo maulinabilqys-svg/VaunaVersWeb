@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FaunaVerse adalah media pembelajaran interaktif untuk mengenal klasifikasi, habitat, dan fakta unik dunia hewan.">
+
+  <title>FaunaVerse — Jelajahi Dunia Hewan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVIGASI -->
+  <header>
+    <a class="logo" href="#beranda">F<span>✦</span> FaunaVerse</a>
+
+    <nav>
+      <a href="#beranda">Beranda</a>
+      <a href="#klasifikasi">Klasifikasi</a>
+      <a href="#hewan-hari-ini">Hewan Hari Ini</a>
+      <a href="#jelajah">Jelajahi</a>
+      <a href="#kuis">Kuis</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#saran" class="nav-saran">Kotak Saran</a>
+
+    </nav>
+
+    <a class="btn" href="#jelajah">Mulai Jelajah ↗</a>
+  </header>
+
+  <main>
+
+    <!-- BERANDA -->
+    <section class="hero" id="beranda">
+      <div>
+        <div class="eyebrow">✳ YOUR WILDLIFE LEARNING SPACE</div>
+
+        <h1>
+          Kenali alam.<br>
+          <em>Jelajahi</em> kehidupan.
+        </h1>
+
+        <p>
+          Temukan fakta menarik, kenali habitat, dan pelajari
+          klasifikasi hewan dengan cara yang seru dan interaktif.
+        </p>
+
+        <a class="btn" href="#jelajah">Mulai Eksplorasi ↗</a>
+      </div>
+
+      <img
+        src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1000&q=85"
+        alt="Jerapah di habitat alaminya"
+      >
+    </section>
+
+    <!-- STATISTIK -->
+    <div class="stats">
+      <div><b>05</b><span>Kelas hewan</span></div>
+      <div><b>18+</b><span>Hewan untuk dijelajahi</span></div>
+      <div><b>100%</b><span>Belajar interaktif</span></div>
+    </div>
+
+    <!-- KLASIFIKASI -->
+    <section class="content" id="klasifikasi">
+      <div class="heading">
+        <div>
+          <div class="eyebrow">✳ EXPLORE BY CLASS</div>
+          <h2>Kenali setiap <em>kelompoknya.</em></h2>
+        </div>
+
+        <p>
+          Setiap kelompok memiliki ciri khas.
+          Pilih kelompok untuk menjelajahi hewannya.
+        </p>
+      </div>
+
+      <div class="classes">
+        <button class="class" data-filter="Mamalia">
+          <small>01 / MAMALIA</small>
+          <span>🦁</span>
+          <b>Mamalia</b>
+          <p>Menyusui anaknya dan umumnya berambut.</p>
+        </button>
+
+        <button class="class" data-filter="Aves">
+          <small>02 / AVES</small>
+          <span>🦜</span>
+          <b>Aves</b>
+          <p>Tubuh berbulu dan memiliki paruh.</p>
+        </button>
+
+        <button class="class" data-filter="Reptil">
+          <small>03 / REPTIL</small>
+          <span>🐢</span>
+          <b>Reptil</b>
+          <p>Kulit bersisik dan bernapas dengan paru-paru.</p>
+        </button>
+
+        <button class="class" data-filter="Amfibi">
+          <small>04 / AMFIBI</small>
+          <span>🐸</span>
+          <b>Amfibi</b>
+          <p>Umumnya mengalami metamorfosis.</p>
+        </button>
+
+        <button class="class" data-filter="Pisces">
+          <small>05 / PISCES</small>
+          <span>🐠</span>
+          <b>Pisces</b>
+          <p>Hidup di air dan bernapas dengan insang.</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- HEWAN PILIHAN HARI INI -->
+    <section class="daily" id="hewan-hari-ini">
+      <div>
+        <div class="eyebrow" style="color:#D9F36A">
+          ✦ DAILY WILDLIFE SPOTLIGHT
+        </div>
+
+        <h2>Hewan pilihan<br><em>hari ini.</em></h2>
+
+        <p>
+          Satu hari, satu pengetahuan baru.
+          Yuk, kenali salah satu penghuni bumi!
+        </p>
+
+        <p id="tanggalHarian"></p>
+
+        <button class="btn" id="nextDaily"
+          style="background:#D9F36A;color:#123D2E">
+          Hewan berikutnya ↻
+        </button>
+      </div>
+
+      <article class="daily-card">
+        <img id="gambarHarian" src="" alt="Hewan pilihan hari ini">
+
+        <div>
+          <span class="tag" id="kelasHarian">Mamalia</span>
+          <p id="habitatHarian"></p>
+          <h3 id="namaHarian">Hewan pilihan</h3>
+          <p id="deskripsiHarian"></p>
+
+          <div class="fact">
+            <b>✦ FAKTA UNIK</b>
+            <p id="faktaHarian"></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- JELAJAH HEWAN -->
+    <section class="content explore" id="jelajah">
+      <div class="heading">
+        <div>
+          <div class="eyebrow">✳ THE FAUNA COLLECTION</div>
+          <h2>Temukan teman <em>liarmu.</em></h2>
+        </div>
+
+        <p>
+          Cari hewan atau pilih kategori untuk melihat koleksi fauna.
+        </p>
+      </div>
+
+      <div class="searchrow">
+        <input
+          id="search"
+          type="search"
+          placeholder="Cari nama hewan, misalnya komodo..."
+          aria-label="Cari hewan"
+        >
+
+        <div class="filters">
+          <button class="active" data-filter="Semua">Semua</button>
+          <button data-filter="Mamalia">Mamalia</button>
+          <button data-filter="Aves">Aves</button>
+          <button data-filter="Reptil">Reptil</button>
+          <button data-filter="Amfibi">Amfibi</button>
+          <button data-filter="Pisces">Pisces</button>
+        </div>
+      </div>
+
+      <div class="animals" id="animals"></div>
+      
+<section id="jelajah" class="explore">
+  <h2>Jelajahi Dunia Hewan</h2>
+  <p>Kenali berbagai hewan, habitat, dan fakta uniknya!</p>
+
+  <div class="animal-grid" id="animals">
+
+    <article class="animal">
+      <img src="Gambar Binatang/singa.jpeg" alt="Singa">
+      <h3>Singa</h3>
+      <p><b>Klasifikasi:</b> Mamalia</p>
+      <p><b>Habitat:</b> Sabana dan padang rumput Afrika.</p>
+      <p>Singa merupakan karnivor yang hidup berkelompok.</p>
+      <p><b>Fakta unik:</b> Singa termasuk kucing besar yang hidup berkelompok.</p>
+    </article>
+
+    <article class="animal">
+      <img src="Gambar Binatang/orangutan.jpeg" alt="Orangutan">
+      <h3>Orangutan</h3>
+      <p><b>Klasifikasi:</b> Mamalia</p>
+      <p><b>Habitat:</b> Hutan tropis Sumatra dan Kalimantan.</p>
+      <p>Orangutan adalah primata berlengan panjang yang pandai memanjat pohon.</p>
+      <p><b>Fakta unik:</b> Orangutan dapat menggunakan ranting untuk membantu mencari makanan.</p>
+    </article>
+
+    <article class="animal">
+      <img src="Gambar Binatang/kucing.jpeg" alt="Kucing">
+      <h3>Kucing</h3>
+      <p><b>Klasifikasi:</b> Mamalia</p>
+      <p><b>Habitat:</b> Lingkungan rumah dan berbagai habitat yang sesuai.</p>
+      <p>Kucing memiliki cakar, kumis, dan pendengaran yang baik.</p>
+      <p><b>Fakta unik:</b> Kumis membantu kucing mengenali ruang di sekitarnya.</p>
+    </article>
+
+    <article class="animal">
+      <img src="Gambar Binatang/ikan badut.jpeg" alt="Ikan badut">
+      <h3>Ikan Badut</h3>
+      <p><b>Klasifikasi:</b> Pisces</p>
+      <p><b>Habitat:</b> Terumbu karang dan anemon laut.</p>
+      <p>Ikan badut dikenal dengan warna oranye dan garis putih pada tubuhnya.</p>
+      <p><b>Fakta unik:</b> Ikan badut memiliki hubungan simbiosis dengan anemon laut.</p>
+    </article>
+
+    
+<!-- 1. HARIMAU -->
+<article class="animal">
+  <img src="Gambar Binatang/harimau.jpeg" alt="Harimau">
+  <h3>Harimau</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan tropis dan hutan lainnya.</p>
+  <p>Harimau merupakan kucing besar dengan bulu berwarna oranye dan belang hitam.</p>
+  <p><b>Fakta unik:</b> Pola belang setiap harimau berbeda.</p>
+</article>
+
+<!-- 2. SINGA -->
+<article class="animal">
+  <img src="Gambar Binatang/singa.jpeg" alt="Singa">
+  <h3>Singa</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Sabana dan padang rumput Afrika.</p>
+  <p>Singa memiliki tubuh kuat dan singa jantan umumnya mempunyai surai.</p>
+  <p><b>Fakta unik:</b> Singa hidup dalam kelompok yang disebut pride.</p>
+</article>
+
+<!-- 3. GAJAH -->
+<article class="animal">
+  <img src="Gambar Binatang/gajah.jpeg" alt="Gajah">
+  <h3>Gajah</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan dan padang rumput.</p>
+  <p>Gajah merupakan mamalia besar yang memiliki belalai panjang.</p>
+  <p><b>Fakta unik:</b> Belalai gajah membantu mengambil makanan dan air.</p>
+</article>
+
+<!-- 6. PANDA -->
+<article class="animal">
+  <img src="Gambar Binatang/panda.jpeg" alt="Panda">
+  <h3>Panda</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan pegunungan di Tiongkok.</p>
+  <p>Panda memiliki bulu hitam-putih dan tubuh yang kuat.</p>
+  <p><b>Fakta unik:</b> Bambu merupakan bagian utama dari makanan panda.</p>
+</article>
+
+<!-- 5. KUCING -->
+<article class="animal">
+  <img src="Gambar Binatang/kucing.jpeg" alt="Kucing">
+  <h3>Kucing</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Lingkungan permukiman.</p>
+  <p>Kucing merupakan hewan berkaki empat yang memiliki kumis dan cakar.</p>
+  <p><b>Fakta unik:</b> Kumis kucing membantu merasakan keadaan di sekitarnya.</p>
+</article>
+
+<!-- 6. PANDA -->
+<article class="animal">
+  <img src="Gambar Binatang/panda.jpeg" alt="Panda">
+  <h3>Panda</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan pegunungan di Tiongkok.</p>
+  <p>Panda memiliki bulu hitam-putih dan tubuh yang kuat.</p>
+  <p><b>Fakta unik:</b> Bambu merupakan bagian utama dari makanan panda.</p>
+</article>
+
+<!-- 7. ZEBRA -->
+<article class="animal">
+  <img src="Gambar Binatang/zebra.jpeg" alt="Zebra">
+  <h3>Zebra</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Sabana dan padang rumput Afrika.</p>
+  <p>Zebra memiliki tubuh dengan pola belang hitam dan putih.</p>
+  <p><b>Fakta unik:</b> Pola belang setiap zebra memiliki perbedaan.</p>
+</article>
+
+<!-- 8. JERAPAH -->
+<article class="animal">
+  <img src="Gambar Binatang/jerapah.jpeg" alt="Jerapah">
+  <h3>Jerapah</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Sabana Afrika.</p>
+  <p>Jerapah mempunyai leher panjang yang membantunya menjangkau daun di pohon.</p>
+  <p><b>Fakta unik:</b> Jerapah merupakan hewan darat tertinggi yang masih hidup.</p>
+</article>
+
+<!-- 9. LUMBA-LUMBA -->
+<article class="animal">
+  <img src="Gambar Binatang/lumba lumba.jpeg" alt="Lumba-lumba">
+  <h3>Lumba-lumba</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Laut dan beberapa perairan tawar.</p>
+  <p>Lumba-lumba adalah mamalia yang hidup di air dan bernapas dengan paru-paru.</p>
+  <p><b>Fakta unik:</b> Lumba-lumba menggunakan ekolokasi untuk mengenali lingkungan.</p>
+</article>
+
+<!-- 10. KUDA -->
+<article class="animal">
+  <img src="Gambar Binatang/kuda.jpeg" alt="Kuda">
+  <h3>Kuda</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Padang rumput dan peternakan.</p>
+  <p>Kuda memiliki kaki berkuku, surai, dan tubuh yang kuat.</p>
+  <p><b>Fakta unik:</b> Kuda dapat beristirahat sambil berdiri.</p>
+</article>
+
+<!-- 11. ELANG -->
+<article class="animal">
+  <img src="Gambar Binatang/elang.jpeg" alt="Elang">
+  <h3>Elang</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Hutan, pegunungan, dan wilayah terbuka.</p>
+  <p>Elang merupakan burung pemangsa dengan paruh melengkung dan cakar kuat.</p>
+  <p><b>Fakta unik:</b> Elang memiliki penglihatan yang tajam untuk menemukan mangsa.</p>
+</article>
+
+<!-- 12. CENDRAWASIH -->
+<article class="animal">
+  <img src="Gambar Binatang/cendrawasih.jpeg" alt="Burung cendrawasih">
+  <h3>Cendrawasih</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Hutan Papua dan pulau-pulau sekitarnya.</p>
+  <p>Cendrawasih terkenal dengan bulu yang indah dan beragam warna.</p>
+  <p><b>Fakta unik:</b> Banyak jenis cendrawasih memiliki tarian kawin yang khas.</p>
+</article>
+
+<!-- 13. PENGUIN -->
+<article class="animal">
+  <img src="Gambar Binatang/pinguin.jpeg" alt="Penguin">
+  <h3>Penguin</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Belahan bumi selatan.</p>
+  <p>Penguin adalah burung yang sayapnya beradaptasi untuk berenang.</p>
+  <p><b>Fakta unik:</b> Penguin tidak dapat terbang, tetapi merupakan perenang yang baik.</p>
+</article>
+
+<!-- 14. BURUNG HANTU -->
+<article class="animal">
+  <img src="Gambar Binatang/burung hantu.jpeg" alt="Burung hantu">
+  <h3>Burung Hantu</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Hutan dan pepohonan.</p>
+  <p>Burung hantu memiliki mata menghadap ke depan dan pendengaran yang baik.</p>
+  <p><b>Fakta unik:</b> Banyak jenis burung hantu aktif pada malam hari.</p>
+</article>
+
+<!-- 15. MERAK -->
+<article class="animal">
+  <img src="Gambar Binatang/merak.jpeg" alt="Burung merak">
+  <h3>Merak</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Hutan dan semak belukar.</p>
+  <p>Merak jantan memiliki bulu ekor panjang dengan pola menyerupai mata.</p>
+  <p><b>Fakta unik:</b> Merak jantan mengembangkan bulu ekornya saat melakukan pertunjukan kawin.</p>
+</article>
+
+<!-- 16. KOMODO -->
+<article class="animal">
+  <img src="Gambar Binatang/komodo.jpeg" alt="Komodo">
+  <h3>Komodo</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Beberapa pulau di Nusa Tenggara Timur.</p>
+  <p>Komodo adalah kadal besar dengan lidah bercabang dan cakar kuat.</p>
+  <p><b>Fakta unik:</b> Komodo merupakan kadal terbesar yang masih hidup.</p>
+</article>
+
+<!-- 17. IGUANA -->
+<article class="animal">
+  <img src="Gambar Binatang/iguana.jpeg" alt="Iguana">
+  <h3>Iguana</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Hutan tropis dan pepohonan.</p>
+  <p>Iguana mempunyai sisik, ekor panjang, dan jambul di punggung.</p>
+  <p><b>Fakta unik:</b> Iguana dapat berjemur untuk membantu mengatur suhu tubuhnya.</p>
+</article>
+
+<!-- 18. BUAYA -->
+<article class="animal">
+  <img src="Gambar Binatang/buaya.jpeg" alt="Buaya">
+  <h3>Buaya</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Sungai, rawa, dan perairan lainnya.</p>
+  <p>Buaya mempunyai rahang kuat, ekor besar, dan kulit bersisik.</p>
+  <p><b>Fakta unik:</b> Buaya dapat menunggu mangsa dengan bersembunyi di air.</p>
+</article>
+
+<!-- 19. PENYU -->
+<article class="animal">
+  <img src="Gambar Binatang/penyu.jpeg" alt="Penyu">
+  <h3>Penyu</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Laut.</p>
+  <p>Penyu memiliki tempurung dan kaki yang beradaptasi untuk berenang.</p>
+  <p><b>Fakta unik:</b> Penyu betina naik ke pantai untuk bertelur.</p>
+</article>
+
+<!-- 20. BUNG LON -->
+<article class="animal">
+  <img src="Gambar Binatang/bunglon.jpeg" alt="Bunglon">
+  <h3>Bunglon</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Pepohonan dan semak.</p>
+  <p>Bunglon memiliki mata yang dapat bergerak ke arah berbeda.</p>
+  <p><b>Fakta unik:</b> Perubahan warna dapat membantu komunikasi dan pengaturan suhu tubuh.</p>
+</article>
+
+<!-- 21. ULAR PITON -->
+<article class="animal">
+  <img src="Gambar Binatang/ular piton.jpeg" alt="Ular piton">
+  <h3>Ular Piton</h3>
+  <p><b>Klasifikasi:</b> Reptil</p>
+  <p><b>Habitat:</b> Hutan dan wilayah dekat air.</p>
+  <p>Piton adalah ular tidak berbisa dengan tubuh panjang dan berotot.</p>
+  <p><b>Fakta unik:</b> Piton menahan mangsa dengan cara membelitnya.</p>
+</article>
+
+<!-- 22. KATAK -->
+<article class="animal">
+  <img src="Gambar Binatang/katak.jpeg" alt="Katak">
+  <h3>Katak</h3>
+  <p><b>Klasifikasi:</b> Amfibi</p>
+  <p><b>Habitat:</b> Kolam, sungai, dan tempat lembap.</p>
+  <p>Katak memiliki kulit lembap dan kaki belakang yang kuat untuk melompat.</p>
+  <p><b>Fakta unik:</b> Banyak katak mengalami metamorfosis dari berudu menjadi katak dewasa.</p>
+</article>
+
+<!-- 24. AXOLOTL -->
+<article class="animal">
+  <img src="Gambar Binatang/axolot.jpeg" alt="Axolotl">
+  <h3>Axolotl</h3>
+  <p><b>Klasifikasi:</b> Amfibi</p>
+  <p><b>Habitat:</b> Perairan tawar di Meksiko.</p>
+  <p>Axolotl memiliki insang luar yang tampak seperti rumbai di sisi kepalanya.</p>
+  <p><b>Fakta unik:</b> Axolotl dapat meregenerasi beberapa bagian tubuhnya.</p>
+</article>
+
+<!-- 25. IKAN BADUT -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan badut.jpeg" alt="Ikan badut">
+  <h3>Ikan Badut</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Terumbu karang dan anemon laut.</p>
+  <p>Ikan badut dikenal dengan warna oranye dan garis putih pada tubuhnya.</p>
+  <p><b>Fakta unik:</b> Ikan badut memiliki hubungan simbiosis dengan anemon laut.</p>
+</article>
+
+<!-- 26. IKAN HIU -->
+<article class="animal">
+  <img src="Gambar Binatang/hiu.jpeg" alt="Ikan hiu">
+  <h3>Ikan Hiu</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Berbagai perairan laut.</p>
+  <p>Hiu memiliki tubuh kuat, sirip, dan deretan gigi yang dapat berganti.</p>
+  <p><b>Fakta unik:</b> Hiu mempunyai indera khusus untuk membantu mendeteksi mangsa.</p>
+</article>
+
+<!-- 27. IKAN PARI -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan pari.jpeg" alt="Ikan pari">
+  <h3>Ikan Pari</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Laut dan beberapa perairan tawar.</p>
+  <p>Ikan pari memiliki tubuh pipih dan sirip dada lebar.</p>
+  <p><b>Fakta unik:</b> Beberapa jenis pari bergerak dengan mengayunkan siripnya seperti sayap.</p>
+</article>
+
+<!-- 29. IKAN KOI -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan koi.jpeg" alt="Ikan koi">
+  <h3>Ikan Koi</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Kolam air tawar.</p>
+  <p>Ikan koi memiliki corak warna yang beragam, seperti putih, merah, dan hitam.</p>
+  <p><b>Fakta unik:</b> Ikan koi dibudidayakan karena keindahan pola warnanya.</p>
+</article>
+
+<!-- 31. GURITA -->
+<article class="animal">
+  <img src="Gambar Binatang/gurita.jpeg" alt="Gurita">
+  <h3>Gurita</h3>
+  <p><b>Klasifikasi:</b> Invertebrata</p>
+  <p><b>Habitat:</b> Laut.</p>
+  <p>Gurita merupakan hewan bertubuh lunak dengan delapan lengan.</p>
+  <p><b>Fakta unik:</b> Gurita dapat mengubah warna untuk berkamuflase.</p>
+</article>
+
+
+<!-- 36. BADAK -->
+<article class="animal">
+  <img src="Gambar Binatang/badak.jpeg" alt="Badak">
+  <h3>Badak</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan tropis dan padang rumput.</p>
+  <p>Badak memiliki tubuh besar, kulit tebal, dan cula di bagian hidung.</p>
+  <p><b>Fakta unik:</b> Badak Jawa merupakan salah satu satwa langka Indonesia.</p>
+</article>
+
+<!-- 39. KANGURU -->
+<article class="animal">
+  <img src="Gambar Binatang/kangguru.jpeg" alt="Kanguru">
+  <h3>Kanguru</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Padang rumput dan wilayah terbuka Australia.</p>
+  <p>Kanguru memiliki kaki belakang kuat dan kantong pada tubuh betinanya.</p>
+  <p><b>Fakta unik:</b> Anak kanguru berkembang di dalam kantong induknya.</p>
+</article>
+
+<!-- 40. KOALA -->
+<article class="animal">
+  <img src="Gambar Binatang/koala.jpeg" alt="Koala">
+  <h3>Koala</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan eukaliptus Australia.</p>
+  <p>Koala memiliki telinga berbulu, hidung besar, dan tubuh berbulu tebal.</p>
+  <p><b>Fakta unik:</b> Daun eukaliptus merupakan makanan utama koala.</p>
+</article>
+
+<!-- 43. SAPI -->
+<article class="animal">
+  <img src="Gambar Binatang/sapi.jpeg" alt="Sapi">
+  <h3>Sapi</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Padang rumput dan peternakan.</p>
+  <p>Sapi merupakan mamalia herbivor yang banyak dipelihara manusia.</p>
+  <p><b>Fakta unik:</b> Sapi memamah biak untuk membantu mencerna makanannya.</p>
+</article>
+
+<!-- 45. KELINCI -->
+<article class="animal">
+  <img src="Gambar Binatang/kelinci.jpeg" alt="Kelinci">
+  <h3>Kelinci</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Padang rumput, semak, dan lingkungan pemeliharaan.</p>
+  <p>Kelinci memiliki telinga panjang, kaki belakang kuat, dan gigi yang terus tumbuh.</p>
+  <p><b>Fakta unik:</b> Gigi kelinci terus tumbuh sepanjang hidupnya.</p>
+</article>
+
+
+<!-- 47. PAUS BIRU -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan paus.jpeg" alt="Paus biru">
+  <h3>Paus Biru</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Samudra.</p>
+  <p>Paus biru memiliki tubuh sangat besar dan bernapas menggunakan paru-paru.</p>
+  <p><b>Fakta unik:</b> Paus biru merupakan hewan terbesar yang diketahui pernah hidup di Bumi.</p>
+</article>
+
+<!-- 48. ANJING -->
+<article class="animal">
+  <img src="Gambar Binatang/anjing.jpeg" alt="Anjing">
+  <h3>Anjing</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Lingkungan permukiman.</p>
+  <p>Anjing memiliki penciuman tajam dan kemampuan belajar yang baik.</p>
+  <p><b>Fakta unik:</b> Anjing dapat dilatih untuk membantu manusia dalam berbagai tugas.</p>
+</article>
+
+<!-- 49. RUSA -->
+<article class="animal">
+  <img src="Gambar Binatang/rusa.jpeg" alt="Rusa">
+  <h3>Rusa</h3>
+  <p><b>Klasifikasi:</b> Mamalia</p>
+  <p><b>Habitat:</b> Hutan dan padang rumput.</p>
+  <p>Rusa merupakan herbivor dengan kaki panjang dan tubuh yang lincah.</p>
+  <p><b>Fakta unik:</b> Pada banyak jenis rusa, tanduk bercabang tumbuh kembali secara berkala.</p>
+</article>
+
+<!-- 51. KASUARI -->
+<article class="animal">
+  <img src="Gambar Binatang/kasuari.jpeg" alt="Burung kasuari">
+  <h3>Kasuari</h3>
+  <p><b>Klasifikasi:</b> Aves</p>
+  <p><b>Habitat:</b> Hutan tropis Papua dan Australia bagian utara.</p>
+  <p>Kasuari adalah burung besar yang tidak dapat terbang dan memiliki tanduk seperti pelindung di kepalanya.</p>
+  <p><b>Fakta unik:</b> Kasuari membantu penyebaran biji melalui buah yang dimakannya.</p>
+</article>
+
+<!-- 59. IKAN KUDA LAUT -->
+<article class="animal">
+  <img src="Gambar Binatang/kuda laut.jpeg" alt="Kuda laut">
+  <h3>Kuda Laut</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Padang lamun dan terumbu karang.</p>
+  <p>Kuda laut memiliki kepala menyerupai kuda dan ekor yang dapat melilit tumbuhan laut.</p>
+  <p><b>Fakta unik:</b> Pada kuda laut, pejantan membawa telur di kantong pengeraman.</p>
+</article>
+
+<!-- 60. IKAN ARWANA -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan arwana.jpeg" alt="Ikan arwana">
+  <h3>Ikan Arwana</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Sungai dan perairan tawar.</p>
+  <p>Arwana memiliki tubuh memanjang, sisik besar, dan mulut menghadap ke atas.</p>
+  <p><b>Fakta unik:</b> Beberapa jenis arwana menjaga anaknya di dalam mulut.</p>
+</article>
+
+<!-- 61. IKAN PUFFER -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan buntal.jpeg" alt="Ikan buntal">
+  <h3>Ikan Buntal</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Laut dan beberapa perairan payau atau tawar.</p>
+  <p>Ikan buntal memiliki tubuh yang dapat mengembang ketika merasa terancam.</p>
+  <p><b>Fakta unik:</b> Beberapa jenis ikan buntal mengandung racun yang berbahaya.</p>
+</article>
+
+<!-- 62. IKAN LIONFISH -->
+<article class="animal">
+  <img src="Gambar Binatang/ikan lionfish.jpeg" alt="Ikan lionfish">
+  <h3>Ikan Lionfish</h3>
+  <p><b>Klasifikasi:</b> Pisces</p>
+  <p><b>Habitat:</b> Terumbu karang dan perairan laut.</p>
+  <p>Lionfish memiliki sirip panjang dengan pola garis mencolok.</p>
+  <p><b>Fakta unik:</b> Duri siripnya dapat menyuntikkan bisa.</p>
+</article>
+
+  </div>
+</section>
+
+      <p id="count" aria-live="polite"></p>
+    </section>
+
+    <!-- KUIS INTERAKTIF -->
+    
+<!-- KUIS INTERAKTIF -->
+<section class="quiz-section" id="kuis">
+  <div>
+    <div class="eyebrow">✳ TEST YOUR KNOWLEDGE</div>
+
+    <h2>
+      Seberapa kenal kamu dengan <em>fauna?</em>
+    </h2>
+
+    <p class="section-intro">
+      Jawab lima pertanyaan dan lihat skor kamu secara otomatis!
+      Yuk, uji pengetahuanmu tentang dunia hewan.
+    </p>
+  </div>
+
+  <div class="quiz-box">
+    <div class="quiz-header">
+      <span>FAUNAVERSE QUIZ</span>
+      <span id="qCount">01 / 05</span>
+    </div>
+
+    <div class="progress">
+      <div id="bar"></div>
+    </div>
+
+    <div id="quiz">
+      <small id="qLabel">PERTANYAAN 1</small>
+      <h3 id="question">Siap menguji pengetahuanmu?</h3>
+
+      <div class="options" id="options"></div>
+
+      <div class="quiz-bottom">
+        <small id="feedback">Pilih satu jawaban.</small>
+        <button class="btn" id="next" type="button" disabled>
+          Berikutnya →
+        </button>
+      </div>
+    </div>
+
+    <div id="result" hidden>
+      <div style="font-size:40px">🏆</div>
+      <h3 id="resultTitle">Kerja bagus!</h3>
+      <strong id="score">0/5</strong>
+      <p id="resultMessage"></p>
+      <button class="btn" id="restart" type="button">
+        Coba lagi ↻
+  </div>
+</section>
+
+
+<!-- KOTAK SARAN & KOMENTAR -->
+<section class="feedback-section" id="saran">
+  <div class="feedback-heading">
+    <span class="eyebrow">SUARA PENGUNJUNG</span>
+    <h2>Bantu FaunaVerse <em>jadi lebih baik!</em></h2>
+    <p>
+      Ada informasi yang kurang, fitur yang perlu diperbaiki,
+      atau ide menarik? Tulis saranmu di sini.
+    </p>
+  </div>
+
+  <form class="feedback-card" id="feedbackForm">
+    <label for="namaPengunjung">Nama (opsional)</label>
+    <input
+      type="text"
+      id="namaPengunjung"
+      name="nama"
+      placeholder="Nama kamu"
+      maxlength="60"
+    >
+
+    <label for="ratingWebsite">Bagaimana pendapatmu tentang website ini?</label>
+    <select id="ratingWebsite" name="penilaian" required>
+      <option value="">Pilih penilaian</option>
+      <option value="Sangat bagus">Sangat bagus</option>
+      <option value="Bagus">Bagus</option>
+      <option value="Cukup">Cukup</option>
+      <option value="Perlu diperbaiki">Perlu diperbaiki</option>
+    </select>
+
+    <label for="kategoriSaran">Bagian yang ingin kamu beri masukan</label>
+    <select id="kategoriSaran" name="kategori" required>
+      <option value="">Pilih bagian</option>
+      <option value="Tampilan website">Tampilan website</option>
+      <option value="Informasi hewan">Informasi hewan</option>
+      <option value="Foto hewan">Foto hewan</option>
+      <option value="Pencarian dan filter">Pencarian dan filter</option>
+      <option value="Kuis">Kuis</option>
+      <option value="Fitur lain">Fitur lain</option>
+    </select>
+
+    <label for="isiSaran">Saran atau komentarmu</label>
+    <textarea
+      id="isiSaran"
+      name="komentar"
+      rows="5"
+      minlength="5"
+      maxlength="1000"
+      placeholder="Contoh: Informasi habitat hewan bisa ditambah..."
+      required
+    ></textarea>
+
+    <button type="submit" class="btn feedback-submit">
+      Kirim Masukan →
+    </button>
+
+    <p id="feedbackStatus" class="feedback-status" aria-live="polite">
+      Masukanmu membantu pengembangan FaunaVerse.
+    </p>
+  </form>
+</section>
+
+
+    <!-- TENTANG -->
+    <section class="closing" id="tentang">
+      <div class="eyebrow">✳ KEEP EXPLORING</div>
+
+      <h2>
+        Bumi penuh cerita.<br>
+        <em>Yuk, terus belajar.</em>
+      </h2>
+
+      <p>
+        FaunaVerse merupakan media pembelajaran berbasis website
+        untuk mengenal ciri-ciri, habitat, fakta unik, dan
+        klasifikasi hewan.
+      </p>
+
+      <a class="btn" href="#beranda">Kembali ke atas ↑</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year">2026</span> FaunaVerse ·
+    Media Pembelajaran Dunia Hewan
+  </footer>
+
+  <button id="top" aria-label="Kembali ke atas">↑</button>
+
+  
+<script src="script.js"></script>
+</body>
+</html>
+
